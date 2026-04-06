@@ -1,0 +1,61 @@
+Desafio 1
+fun main() {
+    println("Olá, Mundo!")
+    println("Bem-vindo ao Kotlin!")
+
+Desafio 2
+
+fun main() {
+    print("Informe seu nome: ")
+    val nome = readLine() ?: "Brian"
+    print("Informe sua idade: ")
+    val idade = readLine()?.toIntOrNull() ?: 15
+    println("Ola, $nome! Voce tem $idade anos.")
+}
+
+
+Desafio 3
+fun main() {
+    print("Informe sua idade: ")
+    val idade = readLine()?.toIntOrNull() ?: 0
+
+    if (idade in 0..12) {
+        println("Você é uma criança.")
+    } else if (idade in 13..18) {
+        println("Você é um adolescente.")
+    } else {
+        println("Você é um adulto.")
+    }
+}
+Desafio 4
+fun classificarIdade(idade: Int): String {
+    return if (idade in 0..12) {
+        "Você é uma criança."
+    } else if (idade in 13..18) {
+        "Você é um adolescente."
+    } else {
+        "Você é um adulto."
+    }
+}
+
+fun main() {
+    print("Informe sua idade: ")
+    val idade = readLine()?.toIntOrNull() ?: 0
+    val resultado = classificarIdade(idade)
+    println(resultado)
+}
+Desafio 5
+fun recomendarFilmes(idade: Int): String {
+    return when (idade) {
+        in 0..12  -> "Recomendamos filmes infantis."
+        in 13..18 -> "Recomendamos filmes adolescentes."
+        else      -> "Recomendamos filmes para adultos."
+    }
+}
+
+fun main() {
+    print("Informe sua idade: ")
+    val idade = readLine()?.toIntOrNull() ?: 19
+    val recomendacao = recomendarFilmes(idade)
+    println(recomendacao)
+}
