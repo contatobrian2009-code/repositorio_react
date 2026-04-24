@@ -1,0 +1,60 @@
+fun main() {
+    val tarefas = mutableListOf<String>()
+    var opcao: Int
+
+    do {
+        println("\n=== GERENCIADOR DE TAREFAS ===")
+        println("1 - Adicionar tarefa")
+        println("2 - Concluir tarefa")
+        println("3 - Mostrar tarefas pendentes")
+        println("0 - Sair")
+        print("Escolha uma opção: ")
+        opcao = readLine()!!.toInt()
+
+        when (opcao) {
+            1 -> {
+                print("Digite a nova tarefa: ")
+                val tarefa = readLine()!!
+                tarefas.add(tarefa)
+                println("Tarefa adicionada com sucesso!")
+            }
+
+            2 -> {
+                if (tarefas.isEmpty()) {
+                    println("Não há tarefas pendentes.")
+                } else {
+                    println("Tarefas pendentes:")
+                    for (i in tarefas.indices) {
+                        println("${i + 1} - ${tarefas[i]}")
+                    }
+
+                    print("Digite o número da tarefa concluída: ")
+                    val numero = readLine()!!.toInt()
+
+                    if (numero in 1..tarefas.size) {
+                        println("Tarefa '${tarefas[numero - 1]}' concluída!")
+                        tarefas.removeAt(numero - 1)
+                    } else {
+                        println("Número inválido.")
+                    }
+                }
+            }
+
+            3 -> {
+                if (tarefas.isEmpty()) {
+                    println("Nenhuma tarefa pendente.")
+                } else {
+                    println("=== TAREFAS PENDENTES ===")
+                    for (i in tarefas.indices) {
+                        println("${i + 1} - ${tarefas[i]}")
+                    }
+                }
+            }
+
+            0 -> println("Encerrando o sistema...")
+
+            else -> println("Opção inválida!")
+        }
+
+    } while (opcao != 0)
+}
